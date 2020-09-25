@@ -3,6 +3,9 @@
 
 #include<stdio.h>
 #include<malloc.h>
+/*//////////////////////////// 
+// Author: Latty7, CuddleSabe/ 
+*///////////////////////////// 
 typedef struct matrix
 {
 	int row,cow;
@@ -43,6 +46,7 @@ void InitMatrix(Matrix *a)	//初始化矩阵
 			scanf("%lf",&(a->matrix[i][j]));
 }
 	
+
 void ShowMatrix(Matrix *a)	//矩阵展示 
 {	
 	int i,j;
