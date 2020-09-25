@@ -3,6 +3,7 @@
 
 #include<stdio.h>
 #include<malloc.h>
+#include<stdlib.h>
 /*//////////////////////////// 
 // Author: Latty7, CuddleSabe/ 
 *///////////////////////////// 
@@ -46,7 +47,27 @@ void InitMatrix(Matrix *a)	//初始化矩阵
 			scanf("%lf",&(a->matrix[i][j]));
 }
 	
-
+Matrix* MatrixPlus(Matrix *a, Matrix *b)	//矩阵加法 
+{
+	if((a->cow!=b->cow)||((a->row!=b->row)))
+		{
+			printf("Matrix does not match!\nerror:101");
+			exit(0);
+		}	
+	int i,j;
+	Matrix *newMatrix;
+	newMatrix = (Matrix*)malloc(sizeof(Matrix));
+	newMatrix->matrix = (double**)malloc(sizeof(double*)*(a->row));
+	for(i=0;i<a->row;i++)
+		newMatrix->matrix[i]= (double*)malloc(sizeof(double*)*(b->cow));
+	newMatrix->cow=b->cow;
+	newMatrix->row=a->row;
+	for(i=0; i<a->row;i++)
+		for(j=0; j<a->cow;j++)
+			newMatrix->matrix[i][j]=a->matrix[i][j] + b->matrix[i][j];
+	return newMatrix;
+}
+	
 void ShowMatrix(Matrix *a)	//矩阵展示 
 {	
 	int i,j;
